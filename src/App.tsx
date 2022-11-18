@@ -1,13 +1,21 @@
 import React from 'react';
-
-import {store} from './store';
 import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
+
+import {store} from '$store/store';
+import {persistor} from '$store/store';
+
+import ThemeWrapper from '$theme/components/ThemeWrapper';
 
 const App = () => {
   return (
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <ThemeWrapper>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          {null}
+        </PersistGate>
+      </Provider>
+    </ThemeWrapper>
   );
 };
 
