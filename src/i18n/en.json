@@ -1,0 +1,10 @@
+{
+    "cart": {
+        "clearAll": "Clear All",
+        "total": "Total: {{total, currency(USD)}}"
+    },
+    "items": {
+        "price": "Price: {{price, currency(USD)}}",
+        "shopNow": "Shop now"
+    }
+}
