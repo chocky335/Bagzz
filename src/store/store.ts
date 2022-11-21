@@ -11,6 +11,8 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 
+import favouritesReducer from '$features/favourites/favouritesSlice';
+
 import {commonApi} from '$services/commonApi';
 
 const persistConfig = {
@@ -21,6 +23,7 @@ const persistConfig = {
 
 const rootReducer = combineReducers({
   [commonApi.reducerPath]: commonApi.reducer,
+  favourites: favouritesReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
