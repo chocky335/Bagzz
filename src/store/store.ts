@@ -11,13 +11,17 @@ import {
   REHYDRATE,
 } from 'redux-persist';
 
+import {commonApi} from '$services/commonApi';
+
 const persistConfig = {
   key: 'root',
   version: 1,
   storage: AsyncStorage,
 };
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  [commonApi.reducerPath]: commonApi.reducer,
+});
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -28,7 +32,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    });
+    }).concat(commonApi.middleware);
 
     if (__DEV__) {
       const createDebugger = require('redux-flipper').default;
