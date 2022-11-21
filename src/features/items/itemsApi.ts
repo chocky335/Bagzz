@@ -7,7 +7,10 @@ export const bagsApi = commonApi.injectEndpoints({
     fetchItemList: build.query<ItemGeneric[], void>({
       query: () => '/items',
     }),
+    fetchItemDetails: build.query<ItemWithDetails, ItemWithDetails['id']>({
+      query: id => `/items/${id}`,
+    }),
   }),
 });
 
-export const {useFetchItemListQuery} = bagsApi;
+export const {useFetchItemDetailsQuery, useFetchItemListQuery} = bagsApi;
